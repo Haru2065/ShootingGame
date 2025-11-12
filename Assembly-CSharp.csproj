@@ -69,11 +69,13 @@
     <Compile Include="Assets\Script\Player\Player.cs" />
     <Compile Include="Assets\Script\Bullet\Bullet.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyShooter.cs" />
+    <Compile Include="Assets\Script\Enemy\HPBarController.cs" />
     <Compile Include="Assets\Script\System\WaveStatus.cs" />
     <Compile Include="Assets\Script\SO\PlayerSO.cs" />
     <Compile Include="Assets\Script\SO\EnemySO.cs" />
     <Compile Include="Assets\Script\Player\PlayerShot.cs" />
     <Compile Include="Assets\Script\System\EnemySpawnData.cs" />
+    <Compile Include="Assets\Script\Enemy\EnemyHomingBullet.cs" />
     <Compile Include="Assets\Script\Enemy\EnemySpreadBullet.cs" />
     <Compile Include="Assets\Script\Bullet\PlayerBullet.cs" />
     <Compile Include="Assets\Script\Player\PlayerStatus.cs" />

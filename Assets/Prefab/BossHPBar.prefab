@@ -10,13 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 8539946974336200855}
   - component: {fileID: 5125373759272409965}
+  - component: {fileID: -5641413091431207061}
   m_Layer: 5
   m_Name: BossHPBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8539946974336200855
 RectTransform:
   m_ObjectHideFlags: 0
@@ -84,12 +85,26 @@ MonoBehaviour:
   m_HandleRect: {fileID: 5337949930266441586}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 2000
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 2000
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-5641413091431207061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4374926994200970458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9015945e8121ae41950bef96de88a67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHPBarController
+  enemyHPBar: {fileID: 5125373759272409965}
+  enemy: {fileID: 1863298059276006800, guid: d615754c6481d2449b30863527babb04, type: 3}
 --- !u!1 &4541030261641386505
 GameObject:
   m_ObjectHideFlags: 0
