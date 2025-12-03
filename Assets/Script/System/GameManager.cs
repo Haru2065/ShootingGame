@@ -98,7 +98,13 @@ public class GameManager : MonoBehaviour
         //もし残機0になったらゲームオーバーを実行
         if (currentLife <= 0)
         {
-            GameOver();
+            currentLife = 0;
+
+            Player.Instance.PlayerSpriteRender.enabled = false;
+
+            StartCoroutine(Player.Instance.PlayerDieEffect());
+
+            //GameOver();
         }
     }
 

@@ -19,3 +19,4 @@ MonoBehaviour:
     enemies: []
     nextWaveDelay: 0
     WaveClearCount: 1
+    SpawnCount: 0

@@ -6,7 +6,11 @@ using UnityEngine;
 /// </summary>
 [Serializable]
 public class 
-    EnemySpawnData : MonoBehaviour
+EnemySpawnData
 {
-    
+    // この敵のプレハブ
+    public GameObject EnemyPrefab;
+
+    // 同時に出す数
+    public int Count;
 }

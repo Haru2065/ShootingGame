@@ -16,13 +16,6 @@ public class PlayerBullet : Bullet
         if(other.CompareTag("Enemy"))
         {
             Debug.Log("<color=green>[“G‚É“–‚½‚Á‚½!]</color>");
-
-            BossEnemy bossEnemy = GetComponent<BossEnemy>();
-
-            Player player = GetComponent<Player>();
-
-            bossEnemy.OnDmage(player.PlayerAttackPower);
-
             Destroy(gameObject);
         }
     }

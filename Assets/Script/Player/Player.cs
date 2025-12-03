@@ -1,6 +1,8 @@
 using Cysharp.Threading.Tasks;
 using System;
+using System.Collections;
 using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,12 +30,28 @@ public class Player : MonoBehaviour
     [SerializeField, Header("プレイヤーのスプライトレンダラー")]
     private SpriteRenderer playerSpriteRenderer;
 
+    public SpriteRenderer PlayerSpriteRender
+    {
+        get => playerSpriteRenderer;
+        set => playerSpriteRenderer = value;
+    }
+
     [SerializeField, Header("プレイヤーの無敵時間")]
     private float invincibleTime;
 
     [SerializeField,Header("UniTaskでの待ち時間")]
     private float delayTime;
 
+    [SerializeField, Header("プレイヤーのHPが0になったときのエフェクト")]
+    private GameObject playerExprosion1;
+
+    [SerializeField, Header("プレイヤーの残機が０になったときのエフェクト")]
+    private GameObject playerExprosion2;
+
+    [SerializeField, Header("プレイヤーのエフェクト生成位置")]
+    private Transform playerEffectSpawnPoint;
+
+    [SerializeField]
     private bool isInvicible;
 
     //プレイヤーの最大体力
@@ -57,6 +75,19 @@ public class Player : MonoBehaviour
     //キャンセルトークン
     private CancellationTokenSource cts;
 
+    //プレイヤーの操作を可能にするか
+    public bool canControl;
+
+    /// <summary>
+    /// プレイヤーの操作を可能にするかのゲッターセッター
+    /// </summary>
+    public bool CanControl
+    {
+        get => canControl;
+        set => canControl = value;
+    }
+
+
     private void Awake()
     {
         if (instance == null)
@@ -79,6 +110,9 @@ public class Player : MonoBehaviour
 
         //最初は無敵状態にしない
         isInvicible = false;
+
+        //操作を可能にする
+        canControl = true;
     }
 
     /// <summary>
@@ -87,13 +121,12 @@ public class Player : MonoBehaviour
     public void OnCancell()
     {
         cts?.Cancel();
-        cts?.Dispose();
     }
 
     /// <summary>
     /// デバック処理
     /// </summary>
-    void Update()
+    async void Update()
     {
         if(Input.GetKeyDown(KeyCode.F))
         {
@@ -110,15 +143,38 @@ public class Player : MonoBehaviour
                 //無敵状態を開始
                 isInvicible = true;
 
+                canControl = false;
+
                 //点滅を開始
                 StartInvincibleAsync(cts.Token).Forget();
 
                 //無敵を解除
                 isInvicible = false;
+
+                canControl = false;
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            playerCurrentHP = 0;
+            playerHPBar.value = playerCurrentHP;
+
+            if(playerCurrentHP <= 0)
+            {
+                
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            isInvicible = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.L))
+        {
+            isInvicible = false;
+        }
     }
-   
 
     /// <summary>
     /// パラメータをSOから読み込んで設定するメソッド
@@ -169,15 +225,32 @@ public class Player : MonoBehaviour
                 //無敵状態を開始
                 isInvicible = true;
 
-                //点滅を開始
-                StartInvincibleAsync(cts.Token).Forget();
+                //操作を無効化
+                canControl = false;
 
-                //無敵を解除
-                isInvicible = false;
+                StartCoroutine(PlayerNormalExprod());
 
                 playerHPBar.value = playerMaxHP;
             }
         }
+    }
+
+    public IEnumerator PlayerDieEffect()
+    {
+        //エフェクト中は操作を無効化する
+        canControl = false;
+
+        GameObject playerEffectObj = Instantiate(playerExprosion2,playerEffectSpawnPoint.position,Quaternion.identity);
+
+        yield return new WaitForSeconds(2f);
+
+        Destroy(playerEffectObj);
+
+        yield return new WaitForSeconds(2f);
+
+        OnCancell();
+
+        OnDestroy();
     }
 
     private async UniTaskVoid StartInvincibleAsync(CancellationToken token)
@@ -189,6 +262,9 @@ public class Player : MonoBehaviour
         {
             //プレイヤーの点滅開始
             await BlinkAsync(token);
+
+            //無敵を解除
+            isInvicible = false;
         }
 
         //キャンセル処理が行われたらデバックログに表示
@@ -226,4 +302,27 @@ public class Player : MonoBehaviour
         playerSpriteRenderer.enabled = true;
     }
 
+    private IEnumerator PlayerNormalExprod()
+    {
+        playerSpriteRenderer.enabled = false;
+
+        GameObject playerEffectObj = Instantiate(playerExprosion1,playerEffectSpawnPoint.position,Quaternion.identity);
+
+        yield return new WaitForSeconds(2f);
+
+        Destroy(playerEffectObj);
+
+        yield return new WaitForSeconds(2f);
+
+        //点滅を開始
+        StartInvincibleAsync(cts.Token).Forget();
+
+        //操作を可能にする
+        canControl = true;
+    }
+
+    public void OnDestroy()
+    {
+        Destroy(gameObject);
+    }
 }

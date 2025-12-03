@@ -32,6 +32,15 @@ public class BossEnemy : Enemy
     //キャンセルトークンソース
     private CancellationTokenSource cts;
 
+    [SerializeField, Header("ボスが弾を打つ間隔")]
+    private float bossEnemyFireInterval;
+
+    [SerializeField, Header("ボスが弾を打ち続ける時間")]
+    private float bossEnemyFireDuration;
+
+    [SerializeField, Header("ボスが打たない時間間隔")]
+    private float bossEnemyRestDuration;
+
     protected override void Start()
     {
         base.Start();
@@ -58,14 +67,7 @@ public class BossEnemy : Enemy
             //ボスのHPBarも最大に設定
             bossEnemyHPBar.maxValue = EnemyCurrentHP;
             bossEnemyHPBar.value = EnemyCurrentHP;
-
-            Debug.Log(bossEnemyHPBar.value);
         }
-    }
-
-    public void Update()
-    {
-        
     }
 
     /// <summary>
@@ -86,10 +88,15 @@ public class BossEnemy : Enemy
                 var pattern = attacckPatternOrder[index];
 
                 shooter.SetShotType(pattern);
-                shooter.Fire();
 
-                await UniTask.Delay(TimeSpan.FromSeconds(attackInterval), cancellationToken: token);
+                await BossFireLoop(
+                    bossEnemyFireInterval, 
+                    bossEnemyFireDuration, 
+                    bossEnemyRestDuration, 
+                    token
+                );
 
+                //次のパターンへ
                 index = (index + 1) % attacckPatternOrder.Length;
             }
         }
@@ -99,6 +106,41 @@ public class BossEnemy : Enemy
             Debug.Log("射撃開始をキャンセルされました");
         }
         
+    }
+
+    /// <summary>
+    /// ボスの弾を間隔敵に発射するUniTask
+    /// </summary>
+    /// <param name="fireInterval">敵が弾を打つ間隔</param>
+    /// <param name="fireDuration">敵が弾を打ち続ける時間</param>
+    /// <param name="restDuration">打たない時間間隔</param>
+    /// <param name="token">キャンセルできる処理（トークン）</param>
+    /// <returns></returns>
+    private async UniTask BossFireLoop(float fireInterval, float fireDuration, float restDuration, CancellationToken token)
+    {
+        float timer = 0f;
+
+        while (timer < fireDuration && !token.IsCancellationRequested)
+        {
+            shooter.Fire();
+
+            await UniTask.Delay(TimeSpan.FromSeconds(fireInterval), cancellationToken: token);
+            timer += fireInterval;
+        
+        }
+
+        if(!token.IsCancellationRequested)
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(restDuration), cancellationToken: token);
+        }
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("PlayerBullet"))
+        {
+            return;
+        }
     }
 
     public void OnDmage(int damage)
@@ -118,26 +160,10 @@ public class BossEnemy : Enemy
                 Debug.Log("ボスを撃破しました！");
                 WaveManger.Instance.UpDateWave();
 
-                OnDestroy();
-
-                // オブジェクトを破壊
-                Destroy(gameObject);
+                // コルーチンで爆発エフェクト→待機→破壊
+                StartCoroutine(DieWithExplosion());
             }
         }
-    }
-
-    /// <summary>
-    /// プレイヤーの弾が当たったときのメソッド
-    /// </summary>
-    /// <param name="other"></param>
-    protected override void OnTriggerEnter2D(Collider2D other)
-    {
-        //親クラスの当たったときにの処理を呼び出す
-        base.OnTriggerEnter2D(other);
-
-        
-
-        
     }
 
     /// <summary>

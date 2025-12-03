@@ -14,6 +14,8 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Player.Instance == null || !Player.Instance.CanControl) return;
+
         //è„â∫ç∂âEÇWASDÇ≈
         if (Input.GetKey(KeyCode.W))
         {

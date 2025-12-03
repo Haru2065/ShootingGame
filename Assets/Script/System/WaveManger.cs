@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
 
 /// <summary>
@@ -14,9 +13,6 @@ public class WaveManger : MonoBehaviour
     {
         get => instance;
     }
-    
-    [SerializeField,Header("Waveƒf[ƒ^")]
-    private WaveData waveData;
 
     [SerializeField, Header("“G‚ÌoŒ»ˆÊ’u")]
     private Transform[] spawnPoints;
@@ -32,15 +28,26 @@ public class WaveManger : MonoBehaviour
     //Wave”(“à•”“G‚É“®ì‚·‚éWaveCountIndexj
     private int currentwaveIndex;
 
+    public int CurrentWaveIndex
+    {
+        get => currentwaveIndex;
+    }
+
     //“|‚µ‚½“G‚Ì”
     private int destroyEnemies;
 
-    private bool isWaveWctive;
+    private bool isWaveActive;
 
-    private bool isSpawning = false;
+    public bool IsWaveActive
+    {
+        get => isWaveActive;
+    }
 
     //“G‚Ì¶‘¶”
     private int enemyAliveCount;
+
+    [SerializeField,Header("WaveData")]
+    private WaveData waveData;
 
     private void Awake()
     {
@@ -79,7 +86,7 @@ public class WaveManger : MonoBehaviour
             return;
         }
 
-        isWaveWctive = true;
+        isWaveActive = true;
         destroyEnemies = 0;
 
         var wave = waveData.waves[currentwaveIndex];
@@ -100,7 +107,7 @@ public class WaveManger : MonoBehaviour
     /// </summary>
     public void UpDateWave()
     {
-        if(!isWaveWctive) return;
+        if(!isWaveActive    ) return;
 
         //“G‚ğ“|‚µ‚½‚çWave”‚ğ‘‚â‚·
         destroyEnemies++;
@@ -119,7 +126,7 @@ public class WaveManger : MonoBehaviour
     /// </summary>
     private void WaveClear()
     {
-        isWaveWctive = false;
+        isWaveActive = false;
 
         //Wave”‚ğ‘‚â‚·
         currentwaveIndex++;

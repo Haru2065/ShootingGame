@@ -141,11 +141,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 835d0af155666be4dae7732b298463f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
-  bulletPrefab: {fileID: 2438211724953017457, guid: 3333f940cc6023540addc4380a8f848a, type: 3}
+  normalBulletPrefab: {fileID: 8614144689626513769, guid: 40c94b2712d7e784888e656058801a34, type: 3}
+  spreadBullePrefab: {fileID: 2438211724953017457, guid: 3333f940cc6023540addc4380a8f848a, type: 3}
+  homingBulletPrefab: {fileID: 1348542525931555758, guid: 00b3e67de12ec6049ac8b9dfcbd86a72, type: 3}
   firePoint: {fileID: 6051380051676899154}
   bulletCount: 10
   spreadAngle: 60
   shotTypeSelect: 0
+  pattern: 0
+  fireInterval: 5
+  fireDuration: 20
+  restDuration: 5
 --- !u!114 &4749806645633007561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,5 +164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3207380dbe1e7d0468ae1ddcc36aabc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  enemyExprosionEffect: {fileID: 5881034696577607277, guid: 79a48d3f9e3749f4b99534529665f060, type: 3}
+  enemyEffectSpawnPoint: {fileID: 6051380051676899154}
+  enemyRender: {fileID: 521930418960857229, guid: d615754c6481d2449b30863527babb04, type: 3}
   enemySO: {fileID: 11400000, guid: a750d6efae2629249b2c78fe6105c2cf, type: 2}
   searchEnemyID: enemy1

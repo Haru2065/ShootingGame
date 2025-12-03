@@ -40,19 +40,8 @@ public class Player : MonoBehaviour
     private int playerMaxHP;
 
     //プレイヤーの現在体力
+    [SerializeField]
     private int playerCurrentHP;
-
-    //プレイヤーの攻撃力
-    private int playerAttackPower;
-
-    /// <summary>
-    /// プレイヤーの攻撃力のゲッターセッター
-    /// </summary>
-    public int PlayerAttackPower
-    {
-       get => playerAttackPower;
-       set => playerAttackPower = value;
-    }
 
     //キャンセルトークン
     private CancellationTokenSource cts;
@@ -135,8 +124,6 @@ public class Player : MonoBehaviour
             playerMaxHP = playerdata.PlayerMaxHP;
             playerCurrentHP = playerMaxHP;
 
-            playerAttackPower = playerdata.PlayerAttackPower;
-
             //プレイヤーの体力バーも最大に設定
             playerHPBar.maxValue = playerdata.PlayerMaxHP;
             playerHPBar.value = playerCurrentHP;
@@ -164,19 +151,16 @@ public class Player : MonoBehaviour
 
             GameManager.Instacne.DownRemaingLife();
 
-            if(GameManager.Instacne.CurrentLife != 0)
-            {
-                //無敵状態を開始
-                isInvicible = true;
+            
 
-                //点滅を開始
-                StartInvincibleAsync(cts.Token).Forget();
+            //無敵状態を開始
+            isInvicible = true;
 
-                //無敵を解除
-                isInvicible = false;
-
-                playerHPBar.value = playerMaxHP;
-            }
+            //点滅を開始
+            StartInvincibleAsync(cts.Token).Forget();
+            
+            //無敵を解除
+            isInvicible = false;
         }
     }
 

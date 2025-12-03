@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 353949497456490320}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: BossEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,12 +151,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d00df1d50b3dd94ca3af6cc6efc30ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossEnemy
+  enemyExprosionEffect: {fileID: 5881034696577607277, guid: 79a48d3f9e3749f4b99534529665f060, type: 3}
+  enemyEffectSpawnPoint: {fileID: 4945044351193237772}
+  enemyRender: {fileID: 521930418960857229}
   enemySO: {fileID: 11400000, guid: a750d6efae2629249b2c78fe6105c2cf, type: 2}
   searchEnemyID: BossEnemy1
   shooter: {fileID: 353949497456490320}
   attackInterval: 10
   attacckPatternOrder: 000000000100000002000000
   bossEnemyHPBar: {fileID: 5125373759272409965, guid: eb1d30a7fe3345543bd92a3a033ab413, type: 3}
+  enemyHPBarController: {fileID: 0}
+  bossEnemyFireInterval: 0.5
+  bossEnemyFireDuration: 3
+  bossEnemyRestDuration: 4
 --- !u!114 &353949497456490320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,3 +184,6 @@ MonoBehaviour:
   spreadAngle: 60
   shotTypeSelect: 0
   pattern: 1
+  fireInterval: 0
+  fireDuration: 0
+  restDuration: 0

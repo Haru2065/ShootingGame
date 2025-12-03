@@ -63,9 +63,11 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Enemy\Enemy.cs" />
     <Compile Include="Assets\Script\System\WaveManger.cs" />
+    <Compile Include="Assets\Script\Enemy\EnemySpwaner.cs" />
     <Compile Include="Assets\Script\Enemy\BossEnemy.cs" />
     <Compile Include="Assets\Script\Camera\CameraChecker.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyNormalBullet.cs" />
+    <Compile Include="Assets\Script\Enemy\EnemyMove.cs" />
     <Compile Include="Assets\Script\Player\Player.cs" />
     <Compile Include="Assets\Script\Bullet\Bullet.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyShooter.cs" />

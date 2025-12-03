@@ -16,4 +16,5 @@ MonoBehaviour:
   - PlayerID: Player1
     PlayerName: 
     PlayerMaxHP: 500
+    PlayerAttackPower: 100
     PlayerSprite: {fileID: 0}

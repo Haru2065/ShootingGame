@@ -16,9 +16,6 @@ public class PlayerStatus
     [Header("プレイヤーの最大体力")]
     public int PlayerMaxHP;
 
-    [Header("プレイヤーの攻撃力")]
-    public int PlayerAttackPower;
-
     [Header("プレイヤーの見た目")]
     public Sprite PlayerSprite;
 }

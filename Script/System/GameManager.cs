@@ -27,14 +27,6 @@ public class GameManager : MonoBehaviour
     //プレイヤーの現在の残機
     private int currentLife;
 
-    /// <summary>
-    /// プレイヤーの現在の残機のゲッター
-    /// </summary>
-    public int CurrentLife
-    {
-        get => currentLife;
-    }
-
     [SerializeField, Header("現在のWaveテキスト")]
     private TextMeshProUGUI wavetext;
 
@@ -94,6 +86,8 @@ public class GameManager : MonoBehaviour
 
         //テキストを更新する
         UpdateLifeText();
+
+        
 
         //もし残機0になったらゲームオーバーを実行
         if (currentLife <= 0)

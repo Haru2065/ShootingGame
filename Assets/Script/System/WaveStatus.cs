@@ -5,23 +5,24 @@ using UnityEngine;
 [Serializable]
 public class WaveStatus
 {
+
+    [Header("このWaveで出す敵")]
+    public List<EnemySpawnData> enemies = new List<EnemySpawnData>();
+
     [Header("ウェーブ数")]
     public int waveCount;
 
-    [Header("このWaveで出す敵プレハブ")]
-    public GameObject enemyPrefab;
 
     [Header("敵の出現間隔（秒）")]
     public float spawnInterval = 0.5f;
-
-    [Header("このWaveで出す敵の情報")]
-    public List<EnemySpawnData> enemies = new List<EnemySpawnData>();
 
     [Header("次のWaveまでの待機時間")]
     public float nextWaveDelay = 3f;
 
     [SerializeField,Header("Waveクリアに必要な撃破数")]
     public int WaveClearCount;
+
+    public int SpawnCount;
 
     /// <summary>
     /// このWaveがクリアされたかどうかを判定

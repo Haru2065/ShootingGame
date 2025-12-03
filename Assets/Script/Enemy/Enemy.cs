@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,15 @@ using UnityEngine.UI;
 /// </summary>
 public class Enemy : MonoBehaviour
 {
+    [SerializeField, Header("敵の爆発エフェクト")]
+    protected GameObject enemyExprosionEffect;
+
+    [SerializeField, Header("敵の爆発エフェクトを生成する位置")]
+    protected Transform enemyEffectSpawnPoint;
+
+    [SerializeField,Header("敵のレンダー")]
+    protected SpriteRenderer enemyRender;
+
     private static Enemy instance;
 
     public static Enemy Instance
@@ -62,6 +72,8 @@ public class Enemy : MonoBehaviour
     {
         //敵のパラメータを設定
         setEnemyParameters();
+
+        enemyRender.enabled = true;
     }
 
     /// <summary>
@@ -90,8 +102,8 @@ public class Enemy : MonoBehaviour
         {
             Debug.Log("PlayerBullet に命中！");
             WaveManger.Instance.UpDateWave();
-            Destroy(gameObject);
 
+            StartCoroutine(DieWithExplosion());
         }
     }
 
@@ -100,6 +112,36 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public virtual void OnDestroy()
     {
+
+    }
+
+    // 爆発エフェクトを表示してから破壊するコルーチン
+    protected virtual IEnumerator DieWithExplosion()
+    {
+        //一度敵のレンダーを非表示
+        enemyRender.enabled = false;
+
+        // 爆発エフェクト生成
+        yield return StartCoroutine(EnemySpawnExplosion());
+
+        // リソース解放
+        OnDestroy();
+
+        // オブジェクト破壊
         Destroy(gameObject);
+    }
+
+    protected virtual IEnumerator EnemySpawnExplosion()
+    {
+        if (enemyExprosionEffect != null && enemyEffectSpawnPoint != null)
+        {
+            GameObject effectObj = Instantiate(enemyExprosionEffect, enemyEffectSpawnPoint.position, Quaternion.identity);
+
+            yield return new WaitForSeconds(2f);
+
+            Destroy(effectObj);            
+        }
+
+        yield return null;
     }
 }

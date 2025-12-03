@@ -9,9 +9,6 @@ public class EnemyShooter : MonoBehaviour
     [SerializeField, Header("扇形の弾のプレハブ")]
     private GameObject spreadBullePrefab;
 
-    [SerializeField, Header("プレイヤーを追尾するプレハブ")]
-    private GameObject homingBulletPrefab;
-
     [SerializeField, Header("敵の弾が発射される位置")]
     private Transform firePoint;
 
@@ -46,17 +43,16 @@ public class EnemyShooter : MonoBehaviour
     private void Start()
     {
         enemy = GetComponent<Enemy>();
-
+        
         //パターンで動作させない場合選択した射撃タイプのみで発射する
-        if (!pattern)
+        if(pattern)
         {
             //弾の種類を選択に応じて発射する弾の種類変える
             currentType = shotTypeSelect;
-
+            
             //選択した射撃タイプで発射
             Fire();
         }
-        else return;
     }
 
    /// <summary>
@@ -142,12 +138,8 @@ public class EnemyShooter : MonoBehaviour
     
     private void FireHoming()
     {
-        GameObject bulletobj = Instantiate(homingBulletPrefab, firePoint.position, Quaternion.identity);
-        var homingbullet = bulletobj.GetComponent<EnemyHomingBullet>();
-        
-        if (homingbullet != null)
-        {
-            homingbullet.SetOwenerAttackPower(enemy.EnemyAttackPower);
-        }
+        //GameObject obj = Instantiate(homingBulletPrefab, firePoint.position, Quaternion.identity);
+        //var bullet = obj.GetComponent<EnemyHomingBullet>();
+        //bullet.SetEnemy(enemy);
     }
 }

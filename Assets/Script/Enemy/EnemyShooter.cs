@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyShooter : MonoBehaviour
@@ -33,6 +33,15 @@ public class EnemyShooter : MonoBehaviour
     [SerializeField, Header("ƒpƒ^[ƒ“UŒ‚‚ÅƒLƒƒƒ‰‚ğ“®ì‚·‚é‚©")]
     private bool pattern;
 
+    [SerializeField, Header("“G‚ª’e‚ğ‘Å‚ÂŠÔŠu")]
+    private float fireInterval;
+
+    [SerializeField, Header("“G‚ª’e‚ğ‘Å‚¿‘±‚¯‚éŠÔ")]
+    private float fireDuration;
+
+    [SerializeField, Header("‘Å‚½‚È‚¢ŠÔŠÔŠu")]
+    private float restDuration;
+
     /// <summary>
     /// —ñ‹“Œ^:’e‚Ì”­Ëí—Ş
     /// </summary>
@@ -54,7 +63,9 @@ public class EnemyShooter : MonoBehaviour
             currentType = shotTypeSelect;
 
             //‘I‘ğ‚µ‚½ËŒ‚ƒ^ƒCƒv‚Å”­Ë
-            Fire();
+            StartCoroutine(FireLoop());
+
+            //Fire();
         }
         else return;
     }
@@ -148,6 +159,30 @@ public class EnemyShooter : MonoBehaviour
         if (homingbullet != null)
         {
             homingbullet.SetOwenerAttackPower(enemy.EnemyAttackPower);
+        }
+    }
+
+    private IEnumerator FireLoop()
+    {
+        while (true)
+        {
+            float timer = 0f;
+
+            //’e‚ğ‘Å‚¿‘±‚¯‚éŠÔ‚É‚È‚é‚Ü‚Å’e‚ğ”­Ë
+            while (timer < fireDuration)
+            {
+                //’e‚ğ”­Ë
+                Fire();
+
+                //’e‚ğ‘Å‚¿‘±‚¯‚é‚ªŠÔŠu‚Å‘Å‚¿‘±‚¯‚é‚æ‚¤‚É‚·‚é
+                yield return new WaitForSeconds(fireInterval);
+
+                //”­ËŠÔ‚ğŒv‘ªŠJn
+                timer += fireInterval;
+            }
+
+            //”­Ë‚ğ’†’f‚·‚éŠÔ
+            yield return new WaitForSeconds(restDuration);
         }
     }
 }

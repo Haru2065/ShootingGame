@@ -38,11 +38,6 @@ public class Enemy : MonoBehaviour
     [SerializeField, Header("敵のSOの検索ID")]
     protected string searchEnemyID;
 
-    public string SearchEnemyID
-    {
-        get => searchEnemyID;
-    }
-    
     private void Awake()
     {
         if(instance == null)
@@ -85,21 +80,13 @@ public class Enemy : MonoBehaviour
     /// <param name="other"></param>
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log($"衝突検知: {other.name}");
 
         if (other.CompareTag("PlayerBullet"))
         {
             Debug.Log("PlayerBullet に命中！");
             WaveManger.Instance.UpDateWave();
             Destroy(gameObject);
-
         }
-    }
-
-    /// <summary>
-    /// オブジェクトが消える時のメソッド
-    /// </summary>
-    public virtual void OnDestroy()
-    {
-        Destroy(gameObject);
     }
 }
