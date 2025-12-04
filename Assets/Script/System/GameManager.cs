@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
     [SerializeField, Header("現在のWaveテキスト")]
     private TextMeshProUGUI wavetext;
 
+    [SerializeField, Header("現在の撃破数")]
+    private TextMeshProUGUI destroyEnemiesText;
+
     private void Awake()
     {
         //インスタンスがなければインスタンス化する
@@ -74,6 +77,9 @@ public class GameManager : MonoBehaviour
         {
             wavetext.text = "Wave " + WaveManger.Instance.CurrentWaveNumber.ToString();
         }
+
+        destroyEnemiesText.text = "EnemyAttackCount:" + WaveManger.Instance.DestroyEnemies.ToString();
+
     }
 
     public void UpdateWaveText(int currentWave)

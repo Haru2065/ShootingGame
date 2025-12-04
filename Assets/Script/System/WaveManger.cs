@@ -36,6 +36,15 @@ public class WaveManger : MonoBehaviour
     //“|‚µ‚½“G‚Ì”
     private int destroyEnemies;
 
+    /// <summary>
+    /// “|‚µ‚½“G‚Ì”‚ÌƒQƒbƒ^[ƒZƒbƒ^[
+    /// </summary>
+    public int DestroyEnemies
+    {
+        get => destroyEnemies;
+        set => destroyEnemies = value;
+    }
+
     private bool isWaveActive;
 
     public bool IsWaveActive
