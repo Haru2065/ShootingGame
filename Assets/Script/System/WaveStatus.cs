@@ -5,13 +5,11 @@ using UnityEngine;
 [Serializable]
 public class WaveStatus
 {
-
-    [Header("このWaveで出す敵")]
-    public List<EnemySpawnData> enemies = new List<EnemySpawnData>();
-
-    [Header("ウェーブ数")]
+    [Header("ウェーブ番号")]
     public int waveCount;
 
+    [Header("出現する敵のプレハブ")]
+    public GameObject EnemyPrefab;
 
     [Header("敵の出現間隔（秒）")]
     public float spawnInterval = 0.5f;

@@ -14,9 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   waves:
   - waveCount: 1
-    enemyPrefab: {fileID: 4093220100119952708, guid: 4be98fa6c5d09d5459d2bc0ad726f594, type: 3}
+    EnemyPrefab: {fileID: 4093220100119952708, guid: 4be98fa6c5d09d5459d2bc0ad726f594, type: 3}
     spawnInterval: 0
-    enemies: []
     nextWaveDelay: 0
     WaveClearCount: 1
-    SpawnCount: 0
+    SpawnCount: 10
+  - waveCount: 3
+    EnemyPrefab: {fileID: 5183065791289210846, guid: d615754c6481d2449b30863527babb04, type: 3}
+    spawnInterval: 0
+    nextWaveDelay: 0
+    WaveClearCount: 1
+    SpawnCount: 1

@@ -14,8 +14,13 @@ public class WaveManger : MonoBehaviour
         get => instance;
     }
 
-    [SerializeField, Header("敵の出現位置")]
-    private Transform[] spawnPoints;
+    [SerializeField, Header("WaveData")]
+    private WaveData waveData;
+
+    [SerializeField,Header("スポナー参照")]
+    private EnemySpawner enemySpawner;
+
+
 
     //Wave数(表示用で動作するWaveCountIndex
     private int currentWaveNumber;
@@ -26,11 +31,11 @@ public class WaveManger : MonoBehaviour
     }
 
     //Wave数(内部敵に動作するWaveCountIndex）
-    private int currentwaveIndex;
+    private int currentWaveIndex;
 
     public int CurrentWaveIndex
     {
-        get => currentwaveIndex;
+        get => currentWaveIndex;
     }
 
     //倒した敵の数
@@ -55,9 +60,6 @@ public class WaveManger : MonoBehaviour
     //敵の生存数
     private int enemyAliveCount;
 
-    [SerializeField,Header("WaveData")]
-    private WaveData waveData;
-
     private void Awake()
     {
         if (instance == null)
@@ -77,7 +79,7 @@ public class WaveManger : MonoBehaviour
         destroyEnemies = 0;
 
         //WaveIndexを0で初期化
-        currentwaveIndex = 0;
+        currentWaveIndex = 0;
 
         currentWaveNumber = 1;
 
@@ -89,20 +91,23 @@ public class WaveManger : MonoBehaviour
     /// </summary>
     private void StartWave()
     {
-        if (currentwaveIndex < 0 || currentwaveIndex >= waveData.waves.Count)
+        if (currentWaveIndex >= waveData.waves.Count)
         {
-            Debug.LogError($"Wave index {currentwaveIndex} is out of range!");
+            Debug.Log("全Wave終了");
+            GameManager.Instacne.GameClear();
             return;
         }
 
         isWaveActive = true;
         destroyEnemies = 0;
 
-        var wave = waveData.waves[currentwaveIndex];
+        var wave = waveData.waves[currentWaveIndex];
 
-        GameManager.Instacne.UpdateWaveText(currentwaveIndex + 1);
+        // Wave 表示更新
+        GameManager.Instacne.UpdateWaveText(currentWaveNumber);
 
-
+        // ★ EnemySpawner にスポーン指示！
+        enemySpawner.StartSpawn(wave);
     }
 
     // Update is called once per frame
@@ -121,7 +126,7 @@ public class WaveManger : MonoBehaviour
         //敵を倒したらWave数を増やす
         destroyEnemies++;
 
-        var currentWave = waveData.waves[currentwaveIndex];
+        var currentWave = waveData.waves[currentWaveIndex];
 
         //もし倒した数がクリアに必要な撃破数に達成したらWaveクリアメソッドを実行
         if (currentWave.IsCleared(destroyEnemies))
@@ -138,19 +143,17 @@ public class WaveManger : MonoBehaviour
         isWaveActive = false;
 
         //Wave数を増やす
-        currentwaveIndex++;
+        currentWaveIndex++;
         currentWaveNumber++;
 
         //もし次のWaveに行くと次のWaveのスタート処理を実行
-        if (currentwaveIndex < waveData.waves.Count)
+        if (currentWaveIndex < waveData.waves.Count)
         {
             //Waveスタート処理
             StartCoroutine(NextWaveDelay());
 
-            //StartWave();
-
             //右上のWavetextを更新
-            GameManager.Instacne.UpdateWaveText(currentwaveIndex);
+            GameManager.Instacne.UpdateWaveText(currentWaveIndex);
         }
 
         //全てのWaveが終わるとゲーム
@@ -166,7 +169,7 @@ public class WaveManger : MonoBehaviour
     /// <returns></returns>
     private IEnumerator NextWaveDelay()
     {
-        var delay = waveData.waves[currentwaveIndex - 1].nextWaveDelay;
+        var delay = waveData.waves[currentWaveIndex - 1].nextWaveDelay;
         yield return new WaitForSeconds(delay);
         StartWave();
     }

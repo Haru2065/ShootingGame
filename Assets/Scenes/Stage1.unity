@@ -681,107 +681,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &571900770
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 353949497456490320, guid: d615754c6481d2449b30863527babb04, type: 3}
-      propertyPath: pattern
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 353949497456490320, guid: d615754c6481d2449b30863527babb04, type: 3}
-      propertyPath: fireDuration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 353949497456490320, guid: d615754c6481d2449b30863527babb04, type: 3}
-      propertyPath: fireInterval
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 353949497456490320, guid: d615754c6481d2449b30863527babb04, type: 3}
-      propertyPath: restDuration
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 353949497456490320, guid: d615754c6481d2449b30863527babb04, type: 3}
-      propertyPath: shotTypeSelect
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1863298059276006800, guid: d615754c6481d2449b30863527babb04, type: 3}
-      propertyPath: searchEnemyID
-      value: Boss
-      objectReference: {fileID: 0}
-    - target: {fileID: 1863298059276006800, guid: d615754c6481d2449b30863527babb04, type: 3}
-      propertyPath: bossEnemyHPBar
-      value: 
-      objectReference: {fileID: 1350447814}
-    - target: {fileID: 1863298059276006800, guid: d615754c6481d2449b30863527babb04, type: 3}
-      propertyPath: enemyExprosionEffect
-      value: 
-      objectReference: {fileID: 5881034696577607277, guid: 79a48d3f9e3749f4b99534529665f060, type: 3}
-    - target: {fileID: 1863298059276006800, guid: d615754c6481d2449b30863527babb04, type: 3}
-      propertyPath: enemyHPBarController
-      value: 
-      objectReference: {fileID: 1350447813}
-    - target: {fileID: 1863298059276006800, guid: d615754c6481d2449b30863527babb04, type: 3}
-      propertyPath: enemyEffectSpawnPoint
-      value: 
-      objectReference: {fileID: 1811914171}
-    - target: {fileID: 4945044351193237772, guid: d615754c6481d2449b30863527babb04, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.16456
-      objectReference: {fileID: 0}
-    - target: {fileID: 4945044351193237772, guid: d615754c6481d2449b30863527babb04, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.58406
-      objectReference: {fileID: 0}
-    - target: {fileID: 4945044351193237772, guid: d615754c6481d2449b30863527babb04, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4945044351193237772, guid: d615754c6481d2449b30863527babb04, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4945044351193237772, guid: d615754c6481d2449b30863527babb04, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4945044351193237772, guid: d615754c6481d2449b30863527babb04, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4945044351193237772, guid: d615754c6481d2449b30863527babb04, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4945044351193237772, guid: d615754c6481d2449b30863527babb04, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4945044351193237772, guid: d615754c6481d2449b30863527babb04, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4945044351193237772, guid: d615754c6481d2449b30863527babb04, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5183065791289210846, guid: d615754c6481d2449b30863527babb04, type: 3}
-      propertyPath: m_Name
-      value: Boss
-      objectReference: {fileID: 0}
-    - target: {fileID: 5183065791289210846, guid: d615754c6481d2449b30863527babb04, type: 3}
-      propertyPath: m_TagString
-      value: BossEnemy
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d615754c6481d2449b30863527babb04, type: 3}
 --- !u!1 &631217547
 GameObject:
   m_ObjectHideFlags: 0
@@ -2364,8 +2263,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c498b4f8e0c124341bc22e73a8af0f32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveManger
-  spawnPoints: []
   waveData: {fileID: 11400000, guid: 43ece3a610e19e54c8a205bec8f34ffc, type: 2}
+  enemySpawner: {fileID: 1807703495}
 --- !u!114 &1807703495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2378,11 +2277,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 920acb6e199c57240972f45c4675da30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpwaner
---- !u!4 &1811914171 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4945044351193237772, guid: d615754c6481d2449b30863527babb04, type: 3}
-  m_PrefabInstance: {fileID: 571900770}
-  m_PrefabAsset: {fileID: 0}
+  spawnPoints:
+  - {fileID: 1033560276}
+  - {fileID: 2123504636}
+  - {fileID: 1678965655}
 --- !u!1 &1852581335
 GameObject:
   m_ObjectHideFlags: 0
@@ -2659,4 +2557,3 @@ SceneRoots:
   - {fileID: 44242049}
   - {fileID: 741608618}
   - {fileID: 1807703493}
-  - {fileID: 571900770}

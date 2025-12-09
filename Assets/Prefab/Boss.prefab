@@ -176,8 +176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 835d0af155666be4dae7732b298463f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
-  normalBulletPrefab: {fileID: 8614144689626513769, guid: d43466f2fabeb7d4aa02e33b35396fea, type: 3}
-  spreadBullePrefab: {fileID: 2438211724953017457, guid: 969d6b9a48eb20a48b58eee0ac5547b3, type: 3}
+  normalBulletPrefab: {fileID: 8614144689626513769, guid: 40c94b2712d7e784888e656058801a34, type: 3}
+  spreadBullePrefab: {fileID: 2438211724953017457, guid: 3333f940cc6023540addc4380a8f848a, type: 3}
   homingBulletPrefab: {fileID: 1348542525931555758, guid: 00b3e67de12ec6049ac8b9dfcbd86a72, type: 3}
   firePoint: {fileID: 4945044351193237772}
   bulletCount: 10
