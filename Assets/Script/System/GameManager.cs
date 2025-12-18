@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
 
             StartCoroutine(Player.Instance.PlayerDieEffect());
 
-            //GameOver();
+            GameOver();
         }
     }
 
