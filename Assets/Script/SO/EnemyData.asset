@@ -23,3 +23,8 @@ MonoBehaviour:
     EnemySprite: {fileID: 0}
     MaxEnemyMaxHP: 1000
     EnemyAttackPower: 200
+  - EnemyID: enemy2
+    EnemyName: enemy2
+    EnemySprite: {fileID: 0}
+    MaxEnemyMaxHP: 200
+    EnemyAttackPower: 300

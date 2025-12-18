@@ -5,8 +5,6 @@ using UnityEngine;
 [Serializable]
 public class WaveStatus
 {
-    [Header("ウェーブ番号")]
-    public int waveCount;
 
     [Header("出現する敵のプレハブ")]
     public GameObject EnemyPrefab;

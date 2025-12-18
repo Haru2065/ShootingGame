@@ -20,23 +20,31 @@ public class EnemySpawner : MonoBehaviour
     /// </summary>
     public void StartSpawn(WaveStatus wave)
     {
-        if(spawnCorotine != null)
-        {
-            StopCoroutine(spawnCorotine);
-        }
+        StopSpawn();
 
         spawnCorotine = StartCoroutine(SpawnCoroutine(wave));
     }
 
+    public void StopSpawn()
+    {
+        if (spawnCorotine != null)
+        {
+            StopCoroutine(spawnCorotine);
+            spawnCorotine = null;
+        }
+    }
+
     private IEnumerator SpawnCoroutine(WaveStatus wave)
     {
-        for (int i = 0; i < wave.SpawnCount; i++)
+        while (WaveManger.Instance.IsWaveActive)
         {
             Transform p = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
-            Instantiate(wave.EnemyPrefab,p.position, Quaternion.identity);
+            Instantiate(wave.EnemyPrefab, p.position, Quaternion.identity);
 
-            yield return new WaitForSeconds(wave.spawnInterval);
+            yield return new WaitForSeconds(wave.spawnInterval); 
         }
     }
+
+
 }

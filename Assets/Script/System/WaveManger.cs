@@ -57,9 +57,6 @@ public class WaveManger : MonoBehaviour
         get => isWaveActive;
     }
 
-    //“G‚Ì¶‘¶”
-    private int enemyAliveCount;
-
     private void Awake()
     {
         if (instance == null)
@@ -121,7 +118,7 @@ public class WaveManger : MonoBehaviour
     /// </summary>
     public void UpDateWave()
     {
-        if(!isWaveActive    ) return;
+        if(!isWaveActive) return;
 
         //“G‚ğ“|‚µ‚½‚çWave”‚ğ‘‚â‚·
         destroyEnemies++;
@@ -141,6 +138,9 @@ public class WaveManger : MonoBehaviour
     private void WaveClear()
     {
         isWaveActive = false;
+
+        //ƒXƒ|[ƒ“‚ğ’â~
+        enemySpawner.StopSpawn();
 
         //Wave”‚ğ‘‚â‚·
         currentWaveIndex++;

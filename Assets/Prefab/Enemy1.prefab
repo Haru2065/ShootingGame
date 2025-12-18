@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4352075306649334023}
   - component: {fileID: 4540207904882784855}
   - component: {fileID: 4749806645633007561}
+  - component: {fileID: -6869197020417340591}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Enemy
@@ -149,7 +150,7 @@ MonoBehaviour:
   spreadAngle: 60
   shotTypeSelect: 0
   pattern: 0
-  fireInterval: 5
+  fireInterval: 1
   fireDuration: 20
   restDuration: 5
 --- !u!114 &4749806645633007561
@@ -166,6 +167,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   enemyExprosionEffect: {fileID: 5881034696577607277, guid: 79a48d3f9e3749f4b99534529665f060, type: 3}
   enemyEffectSpawnPoint: {fileID: 6051380051676899154}
-  enemyRender: {fileID: 521930418960857229, guid: d615754c6481d2449b30863527babb04, type: 3}
+  enemyRender: {fileID: 2692962323958256197}
   enemySO: {fileID: 11400000, guid: a750d6efae2629249b2c78fe6105c2cf, type: 2}
   searchEnemyID: enemy1
+--- !u!114 &-6869197020417340591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4093220100119952708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c71417f383bfff4eb3e76f5d21b4ab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NormalEnemyMove
+  enterSpped: 3
+  exitSpped: 4
+  followSpeed: 2
+  stopTime: 2
+  stopTimer: 0

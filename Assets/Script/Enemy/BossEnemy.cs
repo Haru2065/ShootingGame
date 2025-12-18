@@ -122,6 +122,9 @@ public class BossEnemy : Enemy
 
         while (timer < fireDuration && !token.IsCancellationRequested)
         {
+            //Shooterや自分自身が破壊されていないかチェック
+            if (this == null || shooter == null) return;
+
             shooter.Fire();
 
             await UniTask.Delay(TimeSpan.FromSeconds(fireInterval), cancellationToken: token);
@@ -131,6 +134,9 @@ public class BossEnemy : Enemy
 
         if(!token.IsCancellationRequested)
         {
+            //待機後も生存を確認する
+            if(this == null) return;
+
             await UniTask.Delay(TimeSpan.FromSeconds(restDuration), cancellationToken: token);
         }
     }
@@ -173,8 +179,14 @@ public class BossEnemy : Enemy
     {
         if (cts != null)
         {
+            //破壊時に実行中のタスクをすべて止める
+            if (!cts.IsCancellationRequested)
+            {
+                cts.Cancel();
+            }
             cts.Dispose();
             cts = null;
         }
+        
     }
 }
