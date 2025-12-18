@@ -68,6 +68,7 @@
     <Compile Include="Assets\Script\Camera\CameraChecker.cs" />
     <Compile Include="Assets\Script\Enemy\BossMove.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyNormalBullet.cs" />
+    <Compile Include="Assets\Script\Enemy\EnemyMove.cs" />
     <Compile Include="Assets\Script\Enemy\NormalEnemyMove.cs" />
     <Compile Include="Assets\Script\Player\Player.cs" />
     <Compile Include="Assets\Script\Bullet\Bullet.cs" />
