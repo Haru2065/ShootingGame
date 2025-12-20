@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class PlayerBullet : Bullet
 {
-    [SerializeField]
-    private int playerAttackPower;
-
-    public void Init(int attack)
-    {
-        playerAttackPower = attack;
-    }
 
     // Update is called once per frame
     void Update()

@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{F5C5C89D-1947-F194-D5F3-41A4D9C6AA58}</ProjectGuid>
+    <ProjectGuid>{4C29D328-2221-BEEB-FDBB-E772EA262183}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -65,9 +65,14 @@
     <Compile Include="Assets\Script\System\WaveManger.cs" />
     <Compile Include="Assets\Script\Enemy\EnemySpwaner.cs" />
     <Compile Include="Assets\Script\Enemy\BossEnemy.cs" />
+    <Compile Include="Assets\Script\System\GameManager\EnemyKillCounter.cs" />
     <Compile Include="Assets\Script\Camera\CameraChecker.cs" />
+    <Compile Include="Assets\Script\Skill\PlayerSkillHolder.cs" />
     <Compile Include="Assets\Script\Enemy\BossMove.cs" />
+    <Compile Include="Assets\Script\UI\SkillSelectButton.cs" />
+    <Compile Include="Assets\Script\UI\SkillGaugeUI.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyNormalBullet.cs" />
+    <Compile Include="Assets\Script\Skill\CircleShotSkill.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyMove.cs" />
     <Compile Include="Assets\Script\System\BackgroundOffsetScroll.cs" />
     <Compile Include="Assets\Script\Enemy\NormalEnemyMove.cs" />
@@ -75,18 +80,25 @@
     <Compile Include="Assets\Script\Bullet\Bullet.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyShooter.cs" />
     <Compile Include="Assets\Script\Enemy\HPBarController.cs" />
+    <Compile Include="Assets\Script\Skill\SkillBase.cs" />
     <Compile Include="Assets\Script\System\WaveStatus.cs" />
     <Compile Include="Assets\Script\SO\PlayerSO.cs" />
     <Compile Include="Assets\Script\SO\EnemySO.cs" />
     <Compile Include="Assets\Script\Player\PlayerShot.cs" />
     <Compile Include="Assets\Script\System\EnemySpawnData.cs" />
+    <Compile Include="Assets\Script\System\GameManager\GameManager.cs" />
+    <Compile Include="Assets\Script\Player\PlayerSkillController.cs" />
+    <Compile Include="Assets\Script\UI\SkillSelectUI.cs" />
+    <Compile Include="Assets\Script\Skill\SkillLottery.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyHomingBullet.cs" />
+    <Compile Include="Assets\Script\Skill\PassiveSkillBase.cs" />
     <Compile Include="Assets\Script\Enemy\EnemySpreadBullet.cs" />
     <Compile Include="Assets\Script\Bullet\PlayerBullet.cs" />
     <Compile Include="Assets\Script\Player\PlayerStatus.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyStatus.cs" />
-    <Compile Include="Assets\Script\System\GameManager.cs" />
+    <Compile Include="Assets\Script\Skill\SkillDataBase.cs" />
     <Compile Include="Assets\Script\Player\PlayerMove.cs" />
+    <Compile Include="Assets\Script\Skill\SkillRarity.cs" />
     <Compile Include="Assets\Script\System\WaveData.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1318,23 +1330,23 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="UniTask.TextMeshPro.csproj">
-      <Project>{CABF1508-DD2A-F739-EF4A-0E9BC45D4AD4}</Project>
+      <Project>{F4C7B0D1-8638-B1C3-ECB1-CACA59A75E7D}</Project>
       <Name>UniTask.TextMeshPro</Name>
     </ProjectReference>
     <ProjectReference Include="UniTask.DOTween.csproj">
-      <Project>{0A4A4DFF-2887-06A2-70DD-C7DC9EFBE6CE}</Project>
+      <Project>{2412D733-3ACA-277E-B8EC-2E697190D5A1}</Project>
       <Name>UniTask.DOTween</Name>
     </ProjectReference>
     <ProjectReference Include="UniTask.Linq.csproj">
-      <Project>{5049BEFE-09F2-B012-9040-972DDBB5C116}</Project>
+      <Project>{52E3F5AE-B111-23BD-9A19-04DE6FA7266A}</Project>
       <Name>UniTask.Linq</Name>
     </ProjectReference>
     <ProjectReference Include="UniTask.csproj">
-      <Project>{247FC51D-B0DF-322C-2124-605368E1E81F}</Project>
+      <Project>{AD06B1B9-FA46-5FEB-BE3B-2164773B0F3F}</Project>
       <Name>UniTask</Name>
     </ProjectReference>
     <ProjectReference Include="UniTask.Addressables.csproj">
-      <Project>{81F4206F-1D42-17C3-C929-04AE60F6B375}</Project>
+      <Project>{37C0ADFA-E5BE-C835-C727-4397F5CCC894}</Project>
       <Name>UniTask.Addressables</Name>
     </ProjectReference>
   </ItemGroup>

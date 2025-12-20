@@ -9,6 +9,18 @@ public abstract class Bullet : MonoBehaviour
     [Tooltip("弾の移動速度")]
     protected float bulletSpeed;
 
+    //この弾が与えるダメージ
+    protected float attackPower;
+
+    /// <summary>
+    /// 弾の攻撃力を初期化する
+    /// </summary>
+    /// <param name="attack"></param>
+    public virtual void Init(float attack)
+    {
+        attackPower = attack;
+    }
+
     /// <summary>
     /// 弾の速度のゲッターセッター
     /// </summary>

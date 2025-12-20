@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{CABF1508-DD2A-F739-EF4A-0E9BC45D4AD4}</ProjectGuid>
+    <ProjectGuid>{F4C7B0D1-8638-B1C3-ECB1-CACA59A75E7D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>UniTask.TextMeshPro</AssemblyName>
@@ -1139,7 +1139,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="UniTask.csproj">
-      <Project>{247FC51D-B0DF-322C-2124-605368E1E81F}</Project>
+      <Project>{AD06B1B9-FA46-5FEB-BE3B-2164773B0F3F}</Project>
       <Name>UniTask</Name>
     </ProjectReference>
   </ItemGroup>
